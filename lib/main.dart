@@ -1,5 +1,6 @@
 import 'package:bird/routes/app_route.dart';
 import 'package:bird/routes/app_screen.dart';
+import 'package:bird/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,14 +8,9 @@ import 'package:get/get.dart';
 
 import 'constants/constant.dart';
 
-Future<void> main() async {
+  main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // DioUtilNew.getInstance();
-  // await CacheHelper.init();
-  VisualDensity.adaptivePlatformDensity;
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]).then((_) => runApp(MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -22,18 +18,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(428, 926),
-      builder: (context, child) => MediaQuery(
-        data: const MediaQueryData(),
-        child: GetMaterialApp(
+      builder: (context, child) =>  GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            appBarTheme: const AppBarTheme(backgroundColor: K.searchColor),
-            scaffoldBackgroundColor: K.mainColor,
-          ),
-          initialRoute: AppRoutes.splashScreen,
+           initialRoute: AppRoutes.splashScreen,
           getPages: AppScreens.screens,
         ),
-      ),
     );
   }
 }
